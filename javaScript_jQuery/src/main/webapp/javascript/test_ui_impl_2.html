@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 페이지</title>
+<style>
+/*  *{} : 모든 곳에 적용시키겠다 */
+   *{
+   margin: 0px; padding:0px;
+   }
+   
+/*    # :id를 뜻한다
+    margin : 위, 오른쪽, 아래, 왼쪽 여백 설정
+    auto : 가로 중앙에 배치한다는 뜻
+    padding : margin과 같은 사용법인데 애는 음수값이 지정안됨
+    width와 height 속성은 각각 가로 길이, 세로 길이
+    border : 선 너비, 선모양, 선색상 을 한꺼번에 지정
+    name : 전달할 값의 이름
+    value : 전달될 값
+    checked : 선택된 상태 -> checkbox 에서 사용(체크표시를 자동으로  해놓겠다는 뜻으로 보면 됨)
+ */
+   #wrapper{
+   margin : 50px auto;
+   width :300px;
+   border: 1px solid black;
+   }
+   
+   #keep-login{
+     color: red;
+   }
+
+</style>
+</head>
+<body>
+<div id ="wrapper">
+ <form>
+ ID:<input type="text" placeholder="아이디를 입력해주세요."><br>
+ PW:<input type="password" placeholder="비밀번호를 입력해주세요."><br>
+ 
+<!--  span : 오른쪽으로 계속 쓰겠다는 용도 -->
+ 
+ <input type="checkbox" checked><span id = "keep-login">로그인 유지</span><br>
+ <input type="submit" value="로그인">
+ </form>
+
+</div>
+
+</body>
+</html>

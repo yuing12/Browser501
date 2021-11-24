@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- JSP가 붙어 있음 %로 자바 사용할 수 있지만 여기선 사용 불가 -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+JavaScript : 대소문자 구분O<br>
+           : 화면에 움직임을 표현하기 위해서 사용(동적화면 설계시 필요), 엄격한 문법 규칙(화면에 움직임, 변환을 줄때)<br>
+           : browser(브라우저)에서 실행되는 프로그램<br>
+           : 30가지 키워드를 지원한다<br>
+Node.js:: 서버에서 실행되는 자바스크립트
+<!-- <%
+ System.out.println("a"); 
+ 
+ 실행여부
+ System.out.println("b"); 
+%> -->
+
+<!-- 영역을 설정하겠다 -->
+<script type="text/javascript">
+//  출력 버튼 누르면 여기 출력됨(사이트 안에서 출력)
+  document.write("wed output");
+// F12 -> Consloe에 출력됨
+  console.log("console:: javascript");
+// 엔터 설정값
+  document.write("<br><br>")
+  
+ // 당신의 나이는? >=20이상이면 성인입니다. 아니면 미성년자 입니다.
+//prompt : 사이트에 입력값을 넣을 수 있음
+ var age = prompt("당신의 나이는?", "0");
+// java와 동일한 조건문
+ if(age >= 20){
+//  document.write : 사이트 안에서 출력
+	 document.write("당신은 성인입니다.");
+ }else {
+	 document.write("당신은 미성년자입니다.");
+	 console.log("에러 확인...");
+ }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>수학객체</title>
+</head>
+<body>
+
+<script>
+//여기서 내 문제점 : 버튼처럼 만드는 것을 못한다....글적
+
+//1부터 3까지 난수(정수)를 발생(컴퓨터 가위(1), 바위(2), 보(3))
+// prompt : 사용자 입력값 '가위' '바위' '보' 중 입력하기
+// ("질문","기본값")
+var submit = prompt("가위, 바위, 보 중 선택하세요!","가위");
+
+//Math.random() : 랜덤 -> 문제 : 소수점도 나옴
+//Math.floor() : 활용하여서 정수로 만들어주기(소수점 1번째 자리를 버림)
+// 랜덤 범위 *3 : 2.9999까지 나오기를 설정한다. 버림을 했기에 2까지 밖에 안나옴
+// +1 : 0도 랜덤에 추가되어있기에 +1를 해서 기본 1부터 나오도록 설정하기, 또 *3이기에 2밖에 안나오니 +1를 해서 3도 나오도록 설정됐다
+var userRandom = Math.floor(Math.random()*3)+1;
+
+//사용자가 낸 값과 컴퓨터의 값이 일치하는지 조건검사.
+//가위, 바위, 보를 1,2,3으로 숫자로 변환하는 작업
+if(submit == "가위" || submit == "바위" || submit == "보"){
+	if(submit == "가위") {
+		submit = 1;
+	}
+	if(submit == "바위") {
+		submit = 2;
+	}
+	if(submit == "보") {
+		submit = 3;
+	}
+	alert("잘못 작성하셨습니다.")
+	location.reload(false);
+}
+
+/*난수를 이용해 컴퓨터 가위 바위 보 이미지 출력*/
+
+document.write("<h3>컴퓨터 가위, 바위, 보 맞추기</h3>");
+
+//submit를 활용해서 이미지도 출력
+document.write("<img src='images/math_img_"+submit+".jpg'>");
+
+if(submit == userRandom) {
+	alert("맞혔습니다!! 축하합니다!!");
+} else {
+	alert("틀렸네요!! 다음기회 또 도전하세요!!");
+}
+
+
+</script>
+
+
+</body>
+</html>
