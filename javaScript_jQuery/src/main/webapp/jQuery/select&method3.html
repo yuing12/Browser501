@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>n번째 엘리먼트 이후 혹은 이전에 위치한 엘리먼트에 스타일 해제하기</title>
+<style>
+ .table{
+   table-layout: auto;
+   width:30%;
+ }
+ 
+ .textstyle{ 
+   background-color:#FFC0CB;
+   color: blue; 
+   font-weight: bold;
+   }
+
+</style>
+<script>
+// == 또는 eq   != 또는 ne    < 또는 lt   > 또는 gt    <= 또는 le  >= 또는 ge 
+
+//lt,gt, addClass( ), removeClass( )
+$(document).ready(function() {
+//div, span, id, class각각에 대한 css 추가하기
+ $("td").addClass("textstyle");
+ $("td:lt(2)").removeClass("textstyle");
+ $("td:gt(4)").removeClass("textstyle");
+
+
+});
+
+</script>
+</head>
+<body>
+  <table>
+      <tr><td>zero</td><td>one</td><td>two</td></tr>
+      <tr><td>three</td><td>four</td><td>five</td></tr>
+   </table>
+</body>
+</html>
