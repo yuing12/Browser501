@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+ var today = new Date(); //오늘날짜
+ var year = today.getFullYear();//올해
+ var month = today.getMonth();//이번 달
+ var YM = year + "년" + (month+1) + "월";// JS는 0~11월로 표시해서 +1을 해준다. (달력의 월을 표시해주기 위함)
+
+ document.getElementById("YM").innerHTML = YM;
+	//HEAD태그에 script를 두고하면 작동 안한다. body 맨 밑에서 할 것!
+
+ var first_date = new Date(year,month,1).getDate();//이번달 첫쨰날 구하기
+ var last_date = new Date(year,month+1,0).getDate();
+   // 이번달 마지막 구하기(다음날 0번쨰 일은 이번달의 마지막날과 같아서 그걸 구해주면 된다)
+   
+ var first_day = new Date(year,month,1).getDay();//오늘 요일구하기(js는 요일을 숫자로 돌려준다.)
+ //원하는 요일부터 1일이 출력되게 하기 위함.
+ 
+//오늘 날짜를 바탕으로 연도, 월을 정의해줬다.
+//for문을 이용해 달력을 채우려고 첫째날과 마지막 날을 구했다.
+//YM 변수는 위에 HTML에 연결해서 자동으로 연도와 월이 표시되게 했다.
+
+
+
+</script>
+
+
+<table id="calendar">
+	<!-- 뒤에서 변수명을 주기 위해 아이디 생성-->
+	<!-- tbody : 테이블의 콘텐츠를 묶이위해서 사용-->
+	<!-- colspan : 열을 합치고 싶을 떄 사용-->
+
+     	<h3>year-monthtd</h3>
+		<tbody>
+			<tr>
+				<td>월</td>
+				<td>화</td>
+				<td>수</td>
+				<td>목</td>
+				<td>금</td>
+				<td>토</td>
+				<td>일</td>
+
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

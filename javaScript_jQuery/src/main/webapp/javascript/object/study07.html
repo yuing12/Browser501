@@ -3,8 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <title>2019년 달력</title>
+<style>
+/*  border : 테이블 선 생성 
+table(겉에 선), td(안에 위아래줄선), th(안에 오른쪽 왼쪽 선])
+*/
+table, td, th {
+    border-collapse : collapse;
+    border : 1px solid white;
+}
+
+table {
+/*  margin-right, margin-left 속성의 개체(테이블)의 오른쪽과 왼쪽의 바깥 영역 여백을 설정
+margin-right, margin-left 속성의 값이 'auto'이면
+해당 객체의 양쪽 바깥 여백은 동일하게 설정
+테이블의 양쪽 바깥 여백이 같으면, 테이블은 가운데 위치하게 됩니다.
+ */
+	 margin-left:auto; 
+    margin-right:auto;
+}
+
+
+td {
+/*  text-align : 글자들 위치를 오른쪽 모서리(right)에 두겠다 */
+	text-align: right;
+}
+
+h1 {
+/*  text-align : 글자들 위치를 가운데(center)에 두겠다 */
+	text-align: center;
+	background-color: #d9d9d9;
+}
+</style>
 </head>
 <body>
+	<h1>   2019년 9월   </h1>
+	<table>
+	<!--        요일         -->
+		<tr bgcolor="#ffefff">
+			<td>일요일</td>
+			<td>월요일</td>
+			<td>화요일</td>
+			<td>수요일</td>
+			<td>목요일</td>
+			<td>금요일</td>
+			<td>토요일</td>
+		</tr>
+		<tr bgcolor="#ffefee">
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+		</tr>
+		<tr bgcolor="#ffefee">
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+		</tr>
+		<tr bgcolor="#ffefee">
+			<td>15</td>
+			<td>16</td>
+			<td>17</td>
+			<td>18</td>
+			<td>19</td>
+			<td>20</td>
+			<td>21</td>
+		</tr>
+		<tr bgcolor="#ffefee">
+			<td>22</td>
+			<td>23</td>
+			<td>24</td>
+			<td>25</td>
+			<td>26</td>
+			<td>27</td>
+			<td>28</td>
+		</tr>
+		<tr>
+			<td bgcolor="#ffefee">29</td>
+			<td bgcolor="#ffefee">30</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+
+	</table>
+
 
 </body>
 </html>

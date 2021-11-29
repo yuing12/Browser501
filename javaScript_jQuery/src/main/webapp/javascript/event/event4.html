@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//이름과 연락처에 대한 유효성 검사.
+	// 이름 : 시작부터 끝까지 한글2~5
+	// 연락처 : 010, 02, 011(선택) - 3~4 - 3~4
+	//  회원가입
+	function submit_chk(myForm) {
+		// 가-힣 사이의 글자를 넣을 수 있고 2,5글자 만 널을 수 있다 끝날때는 $필수
+		// 수직바(/)는 그 중에 하나 \d그 다음숫자조건쓰고 싶을때..아마도..?
+		var reg1 = /^[가-힣]{2,5}$/;
+		var reg2 = /^(010|011|02)\d{3,4}\d{4}$ /;
+		
+
+		var name = myForm.user_name;// 폼안에 있는 이름 user_name를 name에 저장하겠다.
+		var tel = myForm.user_tel;// 폼안에 있는 이름(name) user_tel를 tel에 저장하겠다.
+		var result1 = reg1.test(name.value);//reg1의 조건으로 name의 입력 된 값이 잘 적혔나..?
+			//값은 true 또는 false
+		var result2 = reg2.test(tel.value);
+
+		if(!result1) {
+			alert("이름 입력이 잘못 되었습니다.");
+			name.value = "";
+			name.foucus();
+			return false;
+		}else if(!result2) {
+			alert("연락처 입력이 잘못 되었습니다.")
+			tel.value = "";
+			tel.foucus();
+			return false;
+		}
+
+	}
+	// 가입취소
+	function reset_chk(myForm) {
+		//confirm : 확인과 취소
+		var result = confirm("정말로 회원가입을 취소 하시겠습니까?");
+		if (result)return false;
+	}
+</script>
+</head>
+<!-- onload="document.f1.user_name.focus(); -> 사이트를 열면 커서가 자동으로 이름안에서 깜박깜박 거린다 -->
+<body onload="document.f1.user_name.focus();">
+	<!-- action : 전송할 서버 쪽 스크립트 파일 지정 -->
+	<!-- method : 폼을 서버에 전송할 http메소드 지정 -->
+	<!-- name : 폼을 식별하기 위한 이름을 지정 -->
+	<!-- fieldset : 폼 태그 안에 관련 있는 폼 엘리먼트들을 그룹화 할때 사용 -->
+	<!-- legend : fieldset 하위 태그로 목적에 맞게 이름 지정할 수 있게 해줌 -->
+
+	<form action="#" method="post" name="f1" onsubmit="return submit_chk(this);"
+	                                       	 onreset="return reset_chk(this)">
+		<fieldset>
+			<legend>회원가입</legend>
+			<p>
+				<label for="user_name" id="user_name">이름</label> 
+				<input type="text" name="user_name" id="user_name">
+			</p>
+
+			<p>
+				<label for="user_tel">연락처</label> 
+				<input type="text" name="user_tel" id="user_tel">
+			</p>
+
+			<p>
+				<input type="submit" value="회원가입">
+				 <input type="reset" value="가입취소">
+			</p>
+
+		</fieldset>
+
+
+
+	</form>
+</body>
+</html>

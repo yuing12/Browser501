@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+마우스가 버튼에 올라갔을 때 글자색이 빨간색 아닐땐 검은색으로 설정하기<br>
+<script>
+   function chColor(obj, state) {
+	var myColor;
+	if(state == "over"){
+		myColor = "red";
+	}else {
+		myColor ="black";
+	}
+	//obj안에 있는 내용을 스타일 색에 적용해서 myColor에 넣는다
+	obj.style.color=myColor;
+}
+   //onmouseover : 해당 객체에 마우스가 올라왔을때 이벤트
+   //onmouseout : 해당 객체에서 마우스가 나갔을 때 이벤트 // out : over빼고 아무거나 들어가도 상관없다 
+</script>
+
+ <button  onmouseover="chColor(this,'over');" onmouseout="chColor(this, 'out');" >마우스 오버/아웃</button>
+
+</body>
+</html>

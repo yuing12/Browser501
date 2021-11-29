@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">//실시간으로 js/jquery-3.6.0.js내용을 사용하겠다</script>
+</head>
+<body>
+jQuery : 자바스크립트를 이용해 만든 라이브러리(자바스크립트로 만들어진 다양한 함수들의 집합)<br>
+       : 자바스트립트는 호환성이 떨어져서 그걸 보완하기 만든게 jQuery이다. :App설계 시 한번만 설계(Android, Apple)<br>
+       : 쉽고 편리한 Animation 효과 기능<br>
+<script>
+//$(document) : 선택자
+$(document).ready(function() {
+	alert("jQuery Start!");
+});
+
+$(function(){
+	alert("jQuery Start!!!!!!!!!");
+	
+});
+
+$(function() {
+	$("*").css("border","1px solid blue");
+	
+});
+
+$(function() {
+	$(".direct","h2").css("background-color","yellow");
+	
+});
+
+</script>
+<h1>jQuery</h1>
+<h2>선택자(selector)</h2>
+<h3 class ="direct">직접 선택자(selector)</h3>
+</body>
+</html>

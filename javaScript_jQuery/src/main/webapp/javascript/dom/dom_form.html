@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+function validateForm() {
+// 	                      이름 안에 이름에 들어있는. 값
+  let x = document.forms["myForm"]["fname"].value;
+  if (x == "") {//값을 안넣으면 띄우는 경고 값
+    alert("Name must be filled out");
+    return false;
+  }
+}
+</script>
+</head>
+<body>
+
+<h2>JavaScript Validation</h2>
+
+<!-- action : 실행되면 여기에 있는 주소로 이동 -->
+<form name="myForm" action="form.jsp" onsubmit="return validateForm()" method="post">
+  Name: <input type="text" name="fname">
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

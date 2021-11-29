@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2019년 9월 달력</title>
+
+<!-- Colspan : 열 합치기 / Rowspan : 행 합치기 -->
+
+</head>
+<body>
+	<script>
+	//선생님이랑 하고 있는 풀이
+	//시간을 읽어와서 오전/오후로 표현하기
+    //시간을 읽어와서 오전,오후로 브라우저에 보여줄 수 있게 해주는 function 함수 생성
+	function get_Time() {
+		var now = new Date();// 무조건 객체생성 필수!
+		var hour = now.getHours();//객체를 통해 시간 알 수 있도록 변수 선언
+		var minute = now.getMinutes();//객체를 통한 분을 알 수 있도록 변수 선언
+		var ampm;//오전 오후를 표현할 때 쓸려고 하나 만들어 놨음
+		
+		//hour가 13시부터냐?
+		if(hour > 12) {
+			hour -= 12; //오후면 -12를 하겠다
+			ampm = "오후";//오후이니 오후라고 ampm에 넣어주기
+		} else {//12시가 안넘으면 오전이니 ampm에 오전이라고 넣어주기
+			ampm = "오전";
+		}
+		//만약 hour가 0이면 12라는 숫자를 넣고 아니면 그냥 가지고 있는 시간을 가지고 있어라.
+		//오후 0시가 12시라는걸 표현해 주는 작업(다음날 넘어가기 전 12시를 말함)
+		//삼항 연산자
+		hour =(hour == 0)? 12:hour;
+		if(minute<10 ){//분이 10분보다 작냐?
+			minute = "0"+minute;//분이 10분 이전인 경우 0을 붙여서 출력(예 - 9 > 09)
+			
+			
+		}
+		return ampm+hour+":"+minute;//이 함수를 실행하면 오전/오후와 시간, 분을 돌려준다
+		//오타 1
+		
+	}
+	
+	//년과 달을 받아서 마지막 일 구하기
+	function get_Day(year, month) {
+		var Mon2;
+		var Last_Mon = new Array(31,29,31,30,31,30,31,31,30,31,30,31); // 배열  1~12일 차례대로 마지막 날 표현
+		//2월 육년(마지막일이 달라져서 그걸 표현해 준거다)
+		if(year%4 == 0) {
+			Mon2 = true;
+		}else {
+			Mon2 = false;
+		}
+		Last_Mon[1] =(Mon2)? 29 : 28;
+				
+		return Last_Mon[month];//월에 맞춰서 그 끝날짜를 배열로 만들면 그걸 반환할 수 있음;
+	}
+	
+	var digit =1;// 달의 1번째 1일을 뜻함, DAY일자에 대한 변수생성
+	var curCell =1; //빈 공간..? 셀, cell셀에 대한 변수생성
+	
+	//테이블을 이용해서 달력만들기(7행 7열 위에 년 월도 포함했다)
+	function drawCal(firstDay, lastDate,date,year, monthName) {//요일, 마지막날, 오늘,년도,월
+		var text ="";//해당되는 값을 써주기 위한 text변수 생성
+		//테이블 위치를 가운데로 해주기 위해
+		text += "<CENTER><TABLE><TH COLSPAN = 7 BGCOLOR=#F0F0F0>";//1번행 0000년 0월에 대한 style
+		//년 월을 표현해 주는 아이
+		text += "<FONT COLOR=midnightblue SIZE+= 3>";
+		text += year + "년" + (monthName + 1) + "월";
+		text += "</FONT></TH>";//0000년 00월 (첫번째 행 꾸미기 종료)
+		
+	      // 2번째 행에 대한 내용 만들어주기 
+		var weekDay = new Array("일","월","화","수","목","금","토")//일~토
+		
+		
+		//가운데로 정렬
+		text += "<TR ALIGN=center VALIGN=center>";
+		
+		//글자체 색상 등 설정 += : 기존에 있는거에 추가로 생각하면 편함
+		var openCol = "<TD BGCOLOR=#FFEFFF WIDTH=45 HEIGHT=40>";
+			openCol += "<FONT COLOR=darkblue>";
+		var closeCol = "</FONT></TD>";
+		
+		//일~토요일을 표현하기 위해 하고 있음(7번 반복)
+		for(var dayNum=0; dayNum <= 6;dayNum++){
+			text += openCol+weekDay[dayNum]+closeCol;
+		}
+		text += "</TR>";
+		
+		//달력 표
+		//Math.ceil() : 소수점 이하를 올림한다.
+		// 나누기 월화수목금토일 떄문에 인거 같다
+		//5행이니 5번 수행한다
+		for(var row=1; row<=Math.ceil((lastDate+firstDay-1)/7); row++){//행에 대한 내용을 의미
+		 text += "<TR ALIGN=righ VALIGN=top BGCOLOR=#FFEFEE>";
+		 
+		 //숫자의 시작일이 일이 아닐 수도 있다.
+		 //일단 중첩 for 월화수목금토일에 들어가는 일들을 써주는 작업
+		 for(var col=1; col <= 7; col++){//시작일~말일
+			 if(digit > lastDate) break;//시작하는날이 말일보다 크냐?하면 끝난거기에 빠져나와야한다.
+					 //digit가 달의 마지막 수행후 31>30이기에 빠져나오는거다.
+			if(curCell < firstDay){//현재 셀이 시작하는 날보다 작냐?
+				text += "<TD>&nbsp</TD>;"//&nbsp : 공백 한칸을 뜻함
+				curCell++;
+			}else {
+				if(digit == date){//오늘을 찾는거
+					text += "<TD HEIGHT=40>";
+					text += "<FONT COLOR = Red>";
+					text +=digit;
+					text += "</FONT><BR>";
+					
+					text += "<FONT COLOR=purple SIZE=2>";
+					text +="<CENTER>" + get_Time() + "</CENTER>";
+					text += "</FONT>";
+					text += "</TD>";
+					
+				}else {//오늘이 아닌 날에는 숫자만 넣으면 된다.
+					text += "<TD HEIGHT=40>" + digit + "</TD>";
+					
+				}
+				digit++;
+			}
+			
+		 }//여기까지가 끝
+		 text += "</TR>"
+		 
+		}
+		text += "</TABLE>";
+		text += "</CENTER>";
+		
+		return text; //다 만든 표를 밖으로 내보내겠다.
+	}
+		
+</script>
+
+<script>
+ var now = new Date();
+ var year = now.getYear()+1900; //121; 1900+121 = 2021
+ var month = now.getMonth();
+ var date = now.getDate();
+ 
+ var firstDayInstance = new Date(year, month,1);
+ var firstDay = firstDayInstance.getDay()+1;  //요일 : getDay() 월요일2, 화요일3...
+ console.log("firstDay: "+firstDay);
+ var days = get_Day(year, month); //달의 마지막일
+ 
+ var my_text = drawCal(firstDay,days,date,year,month);//2,30,26,,2021,10
+ document.write(my_text);
+ 
+ </script>
+ 
+ 
+</body>
+</html>

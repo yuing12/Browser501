@@ -8,32 +8,33 @@
 </head>
 <body>
 	<script type="text/javascript">
-		$(document).ready(
+// 	ready(레디) :  문서가 준비가 됐느냐..? document 문서를 통쨰로 흘터보구 시작하는 것
+		$(document).ready(//단축형도 있음
 				function() {
 			var today = new Date();
 
-			$("p").eq(0).text(today);
+			$("p").eq(0).text(today);//한국 표준시
 
 			var year = today.getFullYear();
-			$("p").eq(1).text(year);
+			$("p").eq(1).text(year);//년
 
 			var month = today.getMonth() + 1;
-			$("p").eq(2).text(month);
+			$("p").eq(2).text(month);//월
 
 			var date = today.getDate();
-			$("p").eq(3).text(date);
+			$("p").eq(3).text(date);//일
 
 			var day = today.getDay();
-			$("p").eq(4).text(day);
+			$("p").eq(4).text(day);//요일
 
 			var hours = today.getHours();
-			$("p").eq(5).text(hours);
+			$("p").eq(5).text(hours);//시
 
 			var minutes = today.getMinutes();
-			$("p").eq(6).text(minutes);
+			$("p").eq(6).text(minutes);//분
 
 			var seconds = today.getSeconds();
-			$("p").eq(7).text(seconds);
+			$("p").eq(7).text(seconds);//초
 
 		}
 
