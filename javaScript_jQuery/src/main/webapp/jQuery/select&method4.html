@@ -68,7 +68,7 @@
 	   }
 		
 	}
-	function clearInput() {// 내용 지우기
+	function clearInput() {//회원가입 완료 후 내용 싹 비우기
 		$("input[type=text],input[type=password]").val("");
 		
 	}
@@ -76,11 +76,13 @@
 </script>   
 </head> 
 <body>
-  <div> <span class="item"> 아이디 * </span> <input id="userId" type="text"></div>
-  <div> <span class="item"> 이름   * </span> <input id="userName" type="text"></div>
-  <div> <span class="item"> 암호   * </span> <input id="pwd" type="password"></div>
-  <div> <span class="item"> 암호 확인 * </span> <input id="pwdConfirm" type="password"></div>
-  <input type="button" id="regBtn" value="회원가입">   
+<form action="result.jsp" method="get">
+  <div> <span class="item"> 아이디 * </span> <input name="userId" id="userId" type="text"></div>
+  <div> <span class="item"> 이름   * </span> <input name="userName" id="userName" type="text"></div>
+  <div> <span class="item"> 암호   * </span> <input  name ="pwd" id="pwd" type="password"></div>
+  <div> <span class="item"> 암호 확인 * </span> <input name="pwdConfirm" id="pwdConfirm" type="password"></div>
+  <input type="submit" id="regBtn" value="회원가입">   
+  </form>
 
 </body>
 </html>

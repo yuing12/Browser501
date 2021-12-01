@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+</head>
+<script>
+$(function(){
+	  $("#btn1").click(function(){
+	     $("p").css("background","yellow");
+	     return false;//버튼을 누른후 false값이니 틀렸으니 <a>링크기능 차단
+	  });
+
+
+
+	  $("#btn2").click(function(e){
+		  e.preventDefault();//버튼을 누른후 false값이니 틀렸으니 <a>링크기능 차단
+		  $("p").css("background","purple");
+	
+	  });
+	  
+	  $("#btn3").click(function() {
+		  $("p").css("background","aqua");
+	});
+	});
+
+</script>
+<body>
+  <a href="http://www.google.com" id="btn1">버튼1</a><br>
+  <a href="http://www.google.com" id="btn2">버튼2</a><br>
+  <a href="http://www.google.com" id="btn3">버튼3</a><br>
+  <p>내용..</p>
+  
+
+</body>
+</html>

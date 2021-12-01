@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title> 객체 조작 및 생성</title>
+<script>
+$(function() {
+//(1) h1 태그의 align 속성값을 left적용하기
+// $("h1").css("text-align","left"); // 왼쪽 정렬
+// 선생님 답
+// .attr() : 선택한 요소 집합의 첫 번째 요소의 지정된 속성(attribute)값을 반환하거나, 선택한 요소의 지정된 속성을 전달받은 값으로 설정
+ $("h1").attr("align","left");
+	
+//(2): li태그중 첫번째 요소에 텍스트를 새 텍스틀 바꾸기
+ //$("li").eq(0).text("첫번째 리스트");
+ // : -> 그 안에 들어있는 걸 찾는 걸 표현? //선생님 답
+ $("li:first").text("첫번째 리스트");
+
+//(3)h2태그에 자식 요소인 strong태그의 글자를 빨간색으로 적용
+  $("h2").children("strong").css("color", "red");
+ //선생님 답 // > 그안의 태그를 말함
+  $("h2 > strong").css("color", "red");
+  
+  
+//(4)id=two인 요소의 이전 요소에 글자를 파란색으로 적용
+//.prev()	선택한 요소의 바로 이전에 위치한 형제 요소를 선택한다.
+  $("#two").prev().css("color", "blue");
+  
+//(5)id=two인 요소의 다음에요소에 글자를 보라색으로 적용
+//.next()	선택한 요소의 바로 다음에 위치한 형제 요소를 선택한다.
+  $("#two").next().css("color", "purple");
+  
+//(6)id=two인 요소의 부모 요소에 파선을 생성
+//.parent()	선택한 요소의 부모(parent) 요소를 선택한다.
+//  $("#two").parent().css("border","3px dashed");
+ //선생님 답
+  $("#two").parent().css("border","2px dashed navy");
+  
+//(7)class=myList인 요소내의 가장 앞의 위치에 새요소를 추가
+//.prepend()	선택된 요소의 첫번째에 새로운 요소나 콘텐츠를 추가한다
+ // $(".myList").prepend("<li><strong>Front</strong></li>");
+ //선생님 닶
+  $(".myList").prepend("<li>Front</li>");
+  
+//(8)class=myList인 요소내의 마지막 위치에 새요소를 추가
+//.append()	선택된 요소의 마지막에 새로운 요소나 콘텐츠를 추가한다
+//  $(".myList").append("<li><strong>back</strong></li>");
+ //선생님답
+  $(".myList").append("<li>back</li>");
+  
+//(9)class=three인 요소의 이전 위치에 새요소를 생성
+//.after()	선택한 요소의 바로 뒤쪽에 새로운 요소나 콘텐츠를 추가한다.
+ // $(".three").after("<li>뒤에 삽입</li>");
+ //선생님 답
+   $("<li>뒤에 삽입</li>").insertAfter(".three");
+
+  
+  
+//(10)class=three인 요소의 다음 위치에 새 요소를 생성
+//.before()	선택한 요소의 바로 앞쪽에 새로운 요소나 콘텐츠를 추가한다.
+ // $(".three").before("<li>앞에 삽입</li>");
+  //선생님 답
+  $("<li>앞에 삽입</li>").insertBefore(".three");
+  
+//(11)h2태그중에 2번째 요소를 <div>태그로 감싸기
+//.wrap()	선택한 요소를 포함하는 새로운 요소를 추가한다.
+// $("h2").eq(1).wrap("<div></div>");
+ 
+ //선생님 답
+ $("h2").eq(1).wrap("<div>");
+
+ 
+//(12)h2태그중에 하위 요소를 strong태그를 포함하는 <h2>에 class="tit"속성 추가
+//.addClass
+ //$("h2").eq(0).addClass("tit");
+ //선생님 답
+ $("h2:has('strong')").addClass("tit");
+ 
+//(13)h2태그중에 마지막 요소에 class="tit"속성을 제거
+//.last()	선택한 요소 중에서 마지막 요소를 선택함.
+//.removeAttr
+ // $("h2").last().removeAttr("class");
+  //선생님 답
+  $("h2:last").removeClass("tit");
+
+	
+});
+
+// strong : 굵은 글씨로 표시
+</script>
+<style>
+ div{background-color: yellow;}
+ .tit{background-color:orange;}
+</style>
+</head>
+<body>
+<h1 align="center"><strong>내용1</strong></h1>
+
+<h2><strong>내용2</strong></h2>
+
+<h2>내용3</h2>
+
+<h2 class="tit">내용4</h2>
+
+<ul class="myList">
+  <li>리스트1</li>
+  <li id="two">리스트2</li>
+  <li class="three">리스트3</li>
+  <li>리스트4</li>
+</ul>
+
+</body>
+</html>

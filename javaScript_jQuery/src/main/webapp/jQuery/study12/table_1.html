@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta charset="UTF-8">
+<!-- meta : 해당 문서에 대한 정보인 메타데이터를 정의할 떄 씀. -->
+<!-- 이 문서의 이름은 "author"이고 콘텐츠는 "tailofmoon" 다 -->
+<meta name ="author" content="tailofmoon">
+<title>Calendar</title>
+<style>
+ div{
+  border-color: black;
+ }
+
+ table{
+   color: white;
+   border: 1px solid white;
+}
+
+  h2{
+   color: orange;
+  }
+
+
+</style>
+</head>
+<body>
+
+<script>
+
+function get_Day(year, month) {
+	var Mon2;
+	var Last_Mon = new Array(31,29,31,30,31,30,31,31,30,31,30,31); // 배열  1~12일 차례대로 마지막 날 표현
+	
+	if(year%4 == 0) {
+		Mon2 = true;
+	}else {
+		Mon2 = false;
+	}
+	Last_Mon[1] =(Mon2)? 29 : 28;
+	
+	return Last_Mon[month]
+}
+
+var digit =1;// 달의 1번째 1일을 뜻함, DAY일자에 대한 변수생성
+var curCell =1; //빈 공간..? 셀, cell셀에 대한 변수생성
+		
+function drawCal(firstDay, lastDate,date,year, monthName) {
+
+
+</script>
+
+</body>
+</html>
