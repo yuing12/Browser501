@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSB::AJAX::DB</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+//전체적인 흐름
+//button - 데이터 요청(Select)을 누르면 formreult.jsp가 실행되고 그 안에는 오라클 접속 코드가 들어가 있다
+$(function() {
+$("#id01").on("click", function() {
+	alert("데이터 요청!");
+	$.ajax({
+		url: "dbfrom.jsp",
+		type: 'get',
+		success: function(t) {//strXML안에 있는 태그의 값이 나 날라옴
+			$(t).find("person").each(function() {
+				var name = $(this).find('name').text();
+				var age = $(this).find('age').text();
+				var salary = $(this).find('salary').text()
+				$("<h1></h1>").text(name+" "+age+" "+salary).appendTo('body');
+			});//person안에 있는걸 반복하겠다(eaxh)
+			
+		},
+		error: function() {
+			alert("실패!")
+		}
+	});
+});
+
+$("#id02").on("click", function() {
+	alert("데이터 전송!");
+	$ajax({
+		url: "dbto.jsp",
+		type: "post",
+		data:{
+			name: $("#name1").val(),
+			age: $("#age1").val(),
+			salary: $("#salary1").val()
+			//실패 원인 : 오타
+		},
+		success: function() {
+			//실패 원인 () 뭐가 들어가있었다(공백이여야함)
+			alert("성공!")
+		},
+		error: function() {
+			alert("실패!!");
+		}
+	});
+});
+
+
+
+
+});
+</script>
+
+</head>
+<body>
+<button id=id01>데이터 요청(Select_from)</button><br><br>
+이름: <input type="text" id="name1"><br>
+나이: <input type="text" id="age1"><br>
+금액: <input type="text" id="salary1"><br>
+<button id="id02">DB 전송(Insert_to)</button><br><br>
+
+</body>
+</html>
